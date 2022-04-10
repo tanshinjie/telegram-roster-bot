@@ -27,3 +27,12 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN}}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID}}
+      
+      - name: Commit and push changes on pointer files
+        run: |
+          git config --global user.name "tanshinjie"
+          git config --global user.email "shinjie.work@gmail.com"
+
+          git add -A
+          git commit -m "update pointer files"
+          git push
