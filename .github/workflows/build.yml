@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 7 * * SAT' # every Satuday morning 7 am
+
+jobs:
+  run_weather_bot:
+    name: Run Roster Bot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2.3.3
+
+      - name: Setup Node Environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.13.0
+
+      - name: Clean Install NPM Dependencies
+        run: npm ci
+
+      - name: Run the Bot
+        run: node index.js
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN}}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID}}
