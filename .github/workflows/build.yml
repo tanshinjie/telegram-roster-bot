@@ -1,10 +1,8 @@
 name: build
 
 on:
-  push:
-    branches: [main]
   schedule:
-    - cron: '*/15 * * * 6' # every 15 minutes on Satuday - testing
+    - cron: '0 21 * * 5' # every Friday 9pm
 
 jobs:
   run_roster_bot:
