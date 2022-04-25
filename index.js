@@ -41,4 +41,13 @@ const main = async () => {
   bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
 };
 
-main();
+// main();
+
+const countdown = async () => {
+  day = fs.readFileSync("days-to-drstrange","utf8"); 
+  message=`Countdown to Doctor Strange In The Multiverse Of Madness\n${day} days/-`
+  fs.writeFileSync("days-to-drstrange", (day-1).toString(), { encoding: "utf8" });
+  bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
+};
+
+countdown()
