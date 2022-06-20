@@ -16,18 +16,12 @@ const getToiletCleaner = async () => {
 };
 
 const getHouseCleaner = async () => {
-  const isBiweek = fs.readFileSync("biweekly-check", "utf8");
-  if (parseInt(isBiweek, 10) === 0) {
-    fs.writeFileSync("biweekly-check", "1", { encoding: "utf8" });
-    return "-";
-  } else {
-    const turn = fs.readFileSync("house.txt", "utf8");
-    const user = house[turn];
-    const newTurn = (parseInt(turn, 10) + 1) % 2;
-    fs.writeFileSync("biweekly-check", "0", { encoding: "utf8" });
-    fs.writeFileSync("house.txt", newTurn.toString(), { encoding: "utf8" });
-    return user;
-  }
+  const turn = fs.readFileSync("house.txt", "utf8");
+  const user = house[turn];
+  const newTurn = (parseInt(turn, 10) + 1) % 2;
+  fs.writeFileSync("biweekly-check", "0", { encoding: "utf8" });
+  fs.writeFileSync("house.txt", newTurn.toString(), { encoding: "utf8" });
+  return user;
 };
 
 const generateWeeklyRosterMessage = (toiletCleaner, houseCleaner) =>
