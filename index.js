@@ -5,7 +5,7 @@ const fs = require("fs");
 const bot = new Telegram(process.env.TELEGRAM_TOKEN);
 
 const toilet = ["@iamshinjie", "@AdLye94"];
-const house = ["@fruitcakee", "@andrea_lye"];
+const house = ["@andrea_lye","@fruitcakee"];
 
 const getToiletCleaner = async () => {
   const turn = fs.readFileSync("toilet.txt", "utf8");
