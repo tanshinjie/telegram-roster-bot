@@ -2,7 +2,7 @@ name: build
 
 on:
   schedule:
-    - cron: '0 21 * * 3'
+    # - cron: '0 21 * * 3'
     #- cron: '0 21 * * 5' # every Friday 9pm
 
 jobs:
